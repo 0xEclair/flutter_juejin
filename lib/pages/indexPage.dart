@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_juejin/util/dataUtils.dart';
 import 'package:flutter_juejin/widgets/indexListCell.dart';
+import 'package:flutter_juejin/widgets/indexListHeader.dart';
 import '../model/indexCell.dart';
 
 class IndexPage extends StatefulWidget{
@@ -20,12 +21,15 @@ class IndexPageState extends State<IndexPage>{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text("IndexPage"),
-        IndexListCell(cellInfo: _listData.length>0?_listData[0]:IndexCell(username: "asd"))
-      ],
-    );
+    print(_listData.length);
+    if(_listData.length==0){
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+    return ListView.builder(
+        itemCount: _listData.length+1 , // 1 是header
+        itemBuilder: (context,index) => renderList(context, index));
   }
 
   getList(bool isLoadMore){
@@ -35,6 +39,13 @@ class IndexPageState extends State<IndexPage>{
         print("1");
       });
     });
+  }
+
+  renderList(context,index){
+    if(index==0){
+      return IndexListHeader(false);
+    }
+    return IndexListCell(cellInfo: _listData[index-1]);
   }
 
   List<IndexCell> _listData=new List();
