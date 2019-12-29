@@ -14,8 +14,6 @@ class IndexListCell extends StatelessWidget{
     fontSize: 13.0
   );
 
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +25,7 @@ class IndexListCell extends StatelessWidget{
             height: 20.0,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: buildFirstRow(),
+              children: _buildFirstRow(),
             ),
           ),
           Container(
@@ -50,7 +48,7 @@ class IndexListCell extends StatelessWidget{
     );
   }
 
-  List<Widget> buildFirstRow(){
+  List<Widget> _buildFirstRow(){
     List<Widget> listRow = new List();
     if(cellInfo.hot){
       listRow.add(
@@ -60,7 +58,11 @@ class IndexListCell extends StatelessWidget{
                 fontWeight: FontWeight.w600))
       );
     }
+
     if(cellInfo.isCollection == "post") {
+      if(cellInfo.hot){
+        listRow.add(InTextDot());
+      }
       listRow.add(
           Text("专栏",
               style: TextStyle(
