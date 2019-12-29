@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class GoodAndCommentCell extends StatelessWidget {
-  final int collectionCount;
-  final int commentCount;
+  final int collectionCount_;
+  final int commentCount_;
 
-  GoodAndCommentCell(this.collectionCount,this.commentCount);
+  GoodAndCommentCell(this.collectionCount_,this.commentCount_);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class GoodAndCommentCell extends StatelessWidget {
               Icon(Icons.favorite,size:12.5,
                    color: Theme.of(context).accentColor),
               Text(
-                collectionCount==0?"":collectionCount.toString(),
+                collectionCount_==0?"":collectionCount_.toString(),
                 style: TextStyle(fontSize: 11.5,color: Theme.of(context).accentColor),
               )
             ],
@@ -43,7 +43,7 @@ class GoodAndCommentCell extends StatelessWidget {
             children: <Widget>[
               Icon(Icons.speaker_notes,size:12.5,color: Theme.of(context).accentColor),
               Text(
-                commentCount==0?"":commentCount.toString(),
+                commentCount_==0?"":commentCount_.toString(),
                 style: TextStyle(fontSize: 11.5,color: Theme.of(context).accentColor),
               )
             ],

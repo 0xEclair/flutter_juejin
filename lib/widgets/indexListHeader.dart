@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class IndexListHeader extends StatelessWidget {
-  final bool hasLogin;
+  final bool hasLogin_;
 
-  IndexListHeader(this.hasLogin);
+  IndexListHeader(this.hasLogin_);
 
   @override
   Widget build(BuildContext context) {
-    if(hasLogin){
+    if(hasLogin_){
 
     }
     else{

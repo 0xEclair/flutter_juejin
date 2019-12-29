@@ -21,21 +21,21 @@ class IndexPageState extends State<IndexPage>{
 
   @override
   Widget build(BuildContext context) {
-    print(_listData.length);
-    if(_listData.length==0){
+    print(listData_.length);
+    if(listData_.length==0){
       return Center(
         child: CircularProgressIndicator(),
       );
     }
     return ListView.builder(
-        itemCount: _listData.length+1 , // 1 是header
+        itemCount: listData_.length+1 , // 1 是header
         itemBuilder: (context,index) => renderList(context, index));
   }
 
   getList(bool isLoadMore){
     DataUtils.getIndexListData().then((resultList) {
       setState(() {
-        _listData=resultList;
+        listData_=resultList;
         print("1");
       });
     });
@@ -45,8 +45,8 @@ class IndexPageState extends State<IndexPage>{
     if(index==0){
       return IndexListHeader(false);
     }
-    return IndexListCell(cellInfo: _listData[index-1]);
+    return IndexListCell(cellInfo_: listData_[index-1]);
   }
 
-  List<IndexCell> _listData=new List();
+  List<IndexCell> listData_=new List();
 }

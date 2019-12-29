@@ -7,7 +7,6 @@ class BookPage extends StatefulWidget{
 class BookPageState extends State<BookPage>{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new DefaultTabController(
         length: 3,
         child: Scaffold(
