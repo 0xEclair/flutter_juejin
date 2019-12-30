@@ -1,3 +1,4 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
 import './indexPage.dart';
@@ -5,6 +6,8 @@ import './pinsPage.dart';
 import './bookPage.dart';
 import './reposPage.dart';
 import './activityPage.dart';
+import '../routers/routes.dart';
+import '../routers/application.dart';
 
 class MyApp extends StatefulWidget{
   MyAppState createState() {
@@ -13,6 +16,12 @@ class MyApp extends StatefulWidget{
 }
 
 class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
+  MyAppState() {
+    final router=new Router();
+    Routes.configureRoutes(router);
+    Application.router_=router;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,6 +50,7 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
             )
           )
         ),
+        onGenerateRoute: Application.router_.generator,
       ),
     );
   }

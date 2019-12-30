@@ -1,7 +1,9 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_juejin/widgets/goodAndCommentCell.dart';
 import 'package:flutter_juejin/widgets/inTextDot.dart';
 import '../model/indexCell.dart';
+import '../routers/application.dart';
 
 class IndexListCell extends StatelessWidget{
   final IndexCell cellInfo_;
@@ -16,34 +18,39 @@ class IndexListCell extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 20.0,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: _buildFirstRow(),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 9.0),
-            child: Text(
-              cellInfo_.title,
-              style: TextStyle(
-                color: Color(0xFF393C3F),
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600
+    return InkWell(
+      onTap: (){
+        Application.router_.navigateTo(context, "/detail?id=${Uri.encodeComponent(cellInfo_.detailUrl)}&title=${Uri.encodeComponent(cellInfo_.title)}");
+      },
+      child: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: 20.0,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: _buildFirstRow(),
               ),
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          GoodAndCommentCell(cellInfo_.collectionCount,cellInfo_.commentCount),
-          SizedBox(height: 15.0),
-          Divider(height: 12.0)
-        ],
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 9.0),
+              child: Text(
+                cellInfo_.title,
+                style: TextStyle(
+                    color: Color(0xFF393C3F),
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w600
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            GoodAndCommentCell(cellInfo_.collectionCount,cellInfo_.commentCount),
+            SizedBox(height: 15.0),
+            Divider(height: 12.0)
+          ],
+        ),
       ),
     );
   }
