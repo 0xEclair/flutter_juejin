@@ -15,8 +15,14 @@ class DataUtils{
     var responseList=response["d"]["entrylist"];
     List<IndexCell> resultList=new List();
     for(int i=0;i<responseList.length;i++){
-      IndexCell cellData=new IndexCell.fromJson(responseList[i]);
-      resultList.add(cellData);
+      try {
+        IndexCell cellData=new IndexCell.fromJson(responseList[i]);
+        resultList.add(cellData);
+      }
+      catch (e) {
+        // no specified type,handles all
+        print("something really unknown: $i");
+      }
     }
     return resultList;
   }

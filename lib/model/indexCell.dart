@@ -17,11 +17,15 @@ class IndexCell{
     this.detailUrl,this.isCollection});
 
   factory IndexCell.fromJson(Map<String,dynamic> json){
+    String tag_="";
+    if(json["tags"].length>0){
+      tag_="${json["tags"][0]["title"]}/";
+    }
     return IndexCell(
       hot: json["hot"],
       collectionCount: json["collectionCount"],
       commentCount: json["commentsCount"],
-      tag: (json["tags"].isNotEmpty)?json["tags"][0]["title"]+"/"+json["category"]["name"]:"无",
+      tag: "$tag_${json["category"]["name"]}",
       username: json["user"]["username"],
       createdTime: Util.getTimeDuration(json["createdAt"]),
       title: json["title"],
