@@ -1,20 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class ArticleDetail extends StatelessWidget {
-  final String articleId;
-  final String title;
+class ArticleDetail extends StatefulWidget {
+  final String articleUrl_;
+  final String title_;
 
-  ArticleDetail(@required this.articleId,@required this.title);
+  ArticleDetail(this.articleUrl_, this.title_);
+  ArticleDetailState createState() => ArticleDetailState();
+}
+
+class ArticleDetailState extends State<ArticleDetail> {
+  bool hasLoad_=false;
+  final flutterWebViewPlugin=new FlutterWebviewPlugin();
+
+  @override
+  void initState() {
+    flutterWebViewPlugin.onStateChanged.listen((state){
+      if(state.type==WebViewState.finishLoad){
+        setState(() {
+          hasLoad_=true;
+        });
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WebviewScaffold(
+      url: widget.articleUrl_,
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title_),
       ),
-      body: Center(
-        child: Text("这篇文章的id是$articleId"),
-      ),
+      withZoom: false,
+      withLocalStorage: true,
+      withJavascript: true
     );
   }
 }
