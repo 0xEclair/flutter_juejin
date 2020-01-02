@@ -1,3 +1,4 @@
+import 'package:flutter_juejin/model/pinsCell.dart';
 import 'package:flutter_juejin/util/netUtils.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
@@ -23,6 +24,23 @@ class DataUtils{
         // no specified type,handles all
         print("something really unknown: $i");
       }
+    }
+    return resultList;
+  }
+
+  static Future<List<PinsCell>> getPinsListData(Map<String,dynamic>params) async {
+    List<PinsCell> resultList=new List();
+    var response=await NetUtils.get(Api.PINS_LIST,params: params);
+    var responseList=response["d"]["list"];
+    for(int i=0;i<responseList.length;i++){
+      PinsCell pinsCell;
+      try{
+        pinsCell=PinsCell.fromJson(responseList[i]);
+      }catch(e){
+        print("error $e at $i");
+        continue;
+      }
+      resultList.add(pinsCell);
     }
     return resultList;
   }
