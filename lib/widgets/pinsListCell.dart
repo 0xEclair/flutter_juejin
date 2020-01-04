@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_juejin/model/pinsCell.dart';
 import 'package:flutter_juejin/widgets/pinsCellBottomButtom.dart';
+import 'package:flutter_juejin/widgets/pinsCellHeader.dart';
 import 'package:flutter_juejin/widgets/pinsCellPic.dart';
+import 'package:flutter_juejin/widgets/pinsCellTopic.dart';
 import 'package:flutter_juejin/widgets/pinsCellUrl.dart';
 import 'pinsCellLink.dart';
 class PinsListCell extends StatefulWidget {

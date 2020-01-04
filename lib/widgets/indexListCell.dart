@@ -20,7 +20,7 @@ class IndexListCell extends StatelessWidget{
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Application.router_.navigateTo(context, "/detail?id=${Uri.encodeComponent(cellInfo_.detailUrl)}&title=${Uri.encodeComponent(cellInfo_.title)}");
+        Application.router.navigateTo(context, "/detail?id=${Uri.encodeComponent(cellInfo_.detailUrl)}&title=${Uri.encodeComponent(cellInfo_.title)}");
       },
       child: Container(
         padding: const EdgeInsets.all(10.0),

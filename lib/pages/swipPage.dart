@@ -26,7 +26,7 @@ class SwipPage extends StatelessWidget {
         pagination: new SwiperPagination(),
         index: index,
         onTap: (index){
-          Application.router_.pop(context);
+          Application.router.pop(context);
         },
       ),
     );

@@ -19,7 +19,7 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
   MyAppState() {
     final router=new Router();
     Routes.configureRoutes(router);
-    Application.router_=router;
+    Application.router=router;
   }
 
   @override
@@ -50,7 +50,7 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
             )
           )
         ),
-        onGenerateRoute: Application.router_.generator,
+        onGenerateRoute: Application.router.generator,
       ),
     );
   }

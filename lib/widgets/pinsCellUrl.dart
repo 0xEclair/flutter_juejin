@@ -13,7 +13,7 @@ class PinsCellUrl extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Application.router_.navigateTo(context, "/web?url=${Uri.encodeComponent(url)}&title=${Uri.encodeComponent(urlTitle)}");
+        Application.router.navigateTo(context, "/web?url=${Uri.encodeComponent(url)}&title=${Uri.encodeComponent(urlTitle)}");
       },
       child: Container(
         padding: const EdgeInsets.all(10.0),

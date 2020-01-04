@@ -30,7 +30,7 @@ class PinsCellPic extends StatelessWidget {
         Expanded(
           child: InkWell(
             onTap: (){
-              Application.router_.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}',transition: TransitionType.fadeIn);
+              Application.router.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}',transition: TransitionType.fadeIn);
             },
             child: Image.network(
               pics[i],
@@ -51,7 +51,7 @@ class PinsCellPic extends StatelessWidget {
           Expanded(
             child: InkWell(
               onTap: (){
-                Application.router_.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}');
+                Application.router.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}');
               },
               child: Image.network(
                 pics[i+1],
@@ -73,7 +73,7 @@ class PinsCellPic extends StatelessWidget {
           Expanded(
             child: InkWell(
               onTap: (){
-                Application.router_.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}');
+                Application.router.navigateTo(context, '/swip?pics=${Uri.encodeComponent(_buildPicsStr())}&currentIndex=${i.toString()}');
               },
               child: Image.network(
                 pics[i+2],
