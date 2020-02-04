@@ -14,5 +14,5 @@ class NetUtils {
     var response = await dio.post(url,queryParameters: params);
     return response.data;
   }
-  
+
 }

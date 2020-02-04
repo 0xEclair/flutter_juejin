@@ -1,3 +1,5 @@
+import 'package:flutter_juejin/model/bookCell.dart';
+import 'package:flutter_juejin/model/bookNav.dart';
 import 'package:flutter_juejin/model/pinsCell.dart';
 import 'package:flutter_juejin/util/netUtils.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -42,6 +44,44 @@ class DataUtils{
       }
       resultList.add(pinsCell);
     }
+    return resultList;
+  }
+
+
+  static Future<List<BookNav>> getBookNavData() async {
+    List<BookNav> resultList=[];
+    var response = await NetUtils.get(Api.BOOK_NAV);
+    var responseList = response["d"];
+
+    for(int i=0;i<responseList.length;++i){
+      BookNav bookNav;
+      try{
+        bookNav=BookNav.fromJson(responseList[i]);
+      }catch(e){
+        print("error $e at $i");
+        continue;
+      }
+      resultList.add(bookNav);
+    }
+
+    return resultList;
+  }
+
+  static Future<List<BookCell>> getBookListData(Map<String,dynamic> params) async {
+    List<BookCell> resultList=new List();
+    var response = await NetUtils.get(Api.BOOK_LIST,params: params);
+    var responseList=response["d"];
+    for(int i=0;i<responseList.length;++i){
+      BookCell bookCell;
+      try{
+        bookCell=BookCell.fromJson(responseList[i]);
+      }catch(e){
+        print("error $e at $i");
+        continue;
+      }
+      resultList.add(bookCell);
+    }
+
     return resultList;
   }
 }
