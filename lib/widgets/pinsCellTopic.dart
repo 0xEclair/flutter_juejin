@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../routers/application.dart';
 import 'dart:core';
 
+// 沸点里面的话题
+// 例:今天学到了
 class PinsCellTopic extends StatelessWidget {
   final Map<String, dynamic> topicInfo;
   PinsCellTopic({Key key, this.topicInfo}) : super(key: key);
